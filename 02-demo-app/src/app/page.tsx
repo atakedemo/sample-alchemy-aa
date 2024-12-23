@@ -1,10 +1,9 @@
 "use client";
 
 import { WalletOptions } from '@/components/crypto/wallet-options';
-import { useAccount, useConnect, useDisconnect, useEnsAvatar, useEnsName } from 'wagmi';
+import { useAccount, useDisconnect, useEnsAvatar, useEnsName } from 'wagmi';
 
 export default function Home() {
-  const { connectors, connect } = useConnect();
   const { isConnected, address } = useAccount();
   const { disconnect } = useDisconnect()
   const { data: ensName } = useEnsName({ address })
