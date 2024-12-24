@@ -3,6 +3,7 @@
 import { SimpleGrid, Tabs } from "@chakra-ui/react";
 import { LuWallet, LuUsers } from "react-icons/lu";
 import { DirectTx } from "@/components/crypto/direct-tx";
+import { AccountKit } from "@/components/crypto/account-kit"
 
 export default function Home() {
   return (
@@ -19,7 +20,7 @@ export default function Home() {
             </Tabs.Trigger>
           </Tabs.List>
           <Tabs.Content value="tab-1">
-            Tab 1: Content
+            <AccountKit />
           </Tabs.Content>
           <Tabs.Content value="tab-2">
             <DirectTx />

@@ -9,7 +9,7 @@ export const wagmiConfig = createConfig({
        }),
     chains: [mainnet, sepolia],
     connectors: [
-        walletConnect({ projectId:'409bb205909a856f017bc9aed5a933d3' }),
+        // walletConnect({ projectId:'409bb205909a856f017bc9aed5a933d3' }),
         metaMask(),
     ],
     transports: {

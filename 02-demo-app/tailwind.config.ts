@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { withAccountKitUi } from "@account-kit/react/tailwind";
 
 const config: Config = {
   content: [
