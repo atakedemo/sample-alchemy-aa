@@ -2,7 +2,7 @@
 
 import { SimpleGrid, Tabs } from "@chakra-ui/react";
 import { LuWallet, LuUsers } from "react-icons/lu";
-import { DirectTx } from "@/components/crypto/direct-tx"
+import { DirectTx } from "@/components/crypto/direct-tx";
 
 export default function Home() {
   return (

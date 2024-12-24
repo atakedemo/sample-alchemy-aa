@@ -1,16 +1,28 @@
 "use client"
 
 import * as React from 'react';
-import { useAccount, useConnect, useDisconnect, useEnsAvatar, useEnsName } from 'wagmi';
+import { useAccount, useConnect } from 'wagmi';
+import { Button } from "@/components/ui/button";
+import { Stack } from "@chakra-ui/react";
 
 export function WalletOptions() {
   const { connectors, connect } = useConnect();
-  const { address } = useAccount();
-  const { data: ensName } = useEnsName({ address })
 
-  return connectors.map((connector) => (
-    <button key={connector.uid} onClick={() => connect({ connector })}>
-        {connector.name}
-    </button>
-  ))
+  return (
+    <Stack gap="2" align="flex-start">
+      <>
+        {
+          connectors.map((connector) => (
+            <Button
+              key={connector.uid} 
+              onClick={() => connect({ connector })}
+              gap="10"
+            >
+              {connector.name}
+            </Button>
+          ))
+        }
+      </>
+    </Stack>
+  )
 }

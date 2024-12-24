@@ -4,6 +4,7 @@ import * as React from 'react';
 import { useAccount } from 'wagmi';
 import { publicClient, walletClient } from '../../app/config/viemConfig';
 import { erc20Abi, parseEther } from 'viem';
+import { Button } from "@/components/ui/button";
 
 export function Erc20Menu() {
   const { address } = useAccount();
@@ -21,7 +22,11 @@ export function Erc20Menu() {
 
   return (
     <div>
-      <button onClick={()=>{handleTx()}}>Transfer</button>
+      <Button 
+        onClick={()=>{handleTx()}}
+      >
+        Transfer
+      </Button>
     </div>
   )
 }

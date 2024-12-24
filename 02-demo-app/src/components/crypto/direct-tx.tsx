@@ -4,8 +4,6 @@ import * as React from 'react';
 import { useAccount, useDisconnect, useEnsAvatar, useEnsName } from 'wagmi';
 import { WalletOptions } from '@/components/crypto/wallet-options';
 import { Erc20Menu } from '@/components/crypto/erc20';
-import { publicClient, walletClient } from '../../app/config/viemConfig';
-import { erc20Abi, parseEther } from 'viem';
 
 export function DirectTx() {
     const { isConnected, address } = useAccount();
@@ -18,12 +16,12 @@ export function DirectTx() {
           <>
             {!isConnected ?
                 <>
-                    <h1>NG!!!</h1>
+                    <h1>Please Connect Wallet</h1>
                     <WalletOptions/>
                 </> 
                 :
                 <>
-                    <h1>OK!!!</h1>
+                    <h1>Lets Transfer</h1>
                     <button onClick={() => disconnect()}>Disconnect</button>
                     <div>
                         {ensAvatar && <img alt="ENS Avatar" src={ensAvatar} />}

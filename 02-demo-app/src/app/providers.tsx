@@ -10,12 +10,14 @@ const queryClient = new QueryClient()
 
 export function Providers(props: { children: ReactNode }) {
   return (
-    <Provider>
-      <WagmiProvider config={wagmiConfig}>
-          <QueryClientProvider client={queryClient}>
-              {props.children}
-          </QueryClientProvider>
-      </WagmiProvider>
-    </Provider>
+    
+    <WagmiProvider config={wagmiConfig}>
+        <QueryClientProvider client={queryClient}>
+        <Provider>
+            {props.children}
+            </Provider>
+        </QueryClientProvider>
+    </WagmiProvider>
+   
   );
 }
