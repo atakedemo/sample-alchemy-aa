@@ -1,33 +1,30 @@
 "use client";
 
-import { WalletOptions } from '@/components/crypto/wallet-options';
-import { useAccount, useDisconnect, useEnsAvatar, useEnsName } from 'wagmi';
+import { SimpleGrid, Tabs } from "@chakra-ui/react";
+import { LuWallet, LuUsers } from "react-icons/lu";
+import { DirectTx } from "@/components/crypto/direct-tx"
 
 export default function Home() {
-  const { isConnected, address } = useAccount();
-  const { disconnect } = useDisconnect()
-  const { data: ensName } = useEnsName({ address })
-  const { data: ensAvatar } = useEnsAvatar({ name: ensName! })
-
   return (
-    <main>
-      <>
-        {!isConnected ?
-            <>
-                <h1>NG!!!</h1>
-                <WalletOptions/>
-            </> 
-            :
-            <>
-                <h1>NG!!!</h1>
-                <button onClick={() => disconnect()}>Disconnect</button>
-                <div>
-                    {ensAvatar && <img alt="ENS Avatar" src={ensAvatar} />}
-                    {address && <div>{ensName ? `${ensName} (${address})` : address}</div>}
-                </div>
-            </> 
-        }
-      </>
-    </main>
+      <SimpleGrid gap="14" width="full">
+        <Tabs.Root lazyMount unmountOnExit defaultValue="tab-1" width="full">
+          <Tabs.List>
+            <Tabs.Trigger value="tab-1">
+              <LuUsers />
+              Account Abstraction
+            </Tabs.Trigger>
+            <Tabs.Trigger value="tab-2">
+              <LuWallet />
+              Direct Transaction
+            </Tabs.Trigger>
+          </Tabs.List>
+          <Tabs.Content value="tab-1">
+            Tab 1: Content
+          </Tabs.Content>
+          <Tabs.Content value="tab-2">
+            <DirectTx />
+          </Tabs.Content>
+        </Tabs.Root>
+      </SimpleGrid>
   );
 }
