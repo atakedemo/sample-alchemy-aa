@@ -14,25 +14,34 @@ export function AccountKit() {
     const { logout } = useLogout();
    
     return (
-      <main className="flex min-h-screen flex-col items-center p-24 gap-4 justify-center text-center">
-        {signerStatus.isInitializing ? (
-          <>Loading...</>
-        ) : user ? (
-          <div className="flex flex-col gap-2 p-2">
-            <p className="text-xl font-bold">Success!</p>
-                You are logged in as {user.email ?? "anon"}.
-            <button
-              className="akui-btn akui-btn-primary mt-6"
-              onClick={() => logout()}
-            >
-              Log out
-            </button>
-          </div>
-        ) : (
-          <button className="akui-btn akui-btn-primary" onClick={openAuthModal}>
-            Login
+      <>
+      {signerStatus.isInitializing ? (
+        <>Loading...</>
+      ) : user ? (
+        <div className="flex flex-col gap-2 p-2">
+          <p className="text-xl font-bold">Success!</p>
+          <p>You are logged in as {user.email ?? "anon"}.</p>
+          <p>Your address is {user.address}</p>
+              
+          <button
+            className="akui-btn akui-btn-primary mt-6"
+            onClick={() => logout()}
+          >
+            Log out
           </button>
-        )}
-      </main>
+
+          <button
+            className="akui-btn akui-btn-primary mt-6"
+            onClick={() => logout()}
+          >
+            Send Token
+          </button>
+        </div>
+      ) : (
+        <button className="akui-btn akui-btn-primary" onClick={openAuthModal}>
+          Login
+        </button>
+      )}
+      </>
     );
 }
